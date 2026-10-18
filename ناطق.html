@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الناطق التفاعلي: مفردات القراءة (Reading Vocabulary) - Langua Learn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --font-ar: 'Cairo', sans-serif;
+            --font-en: 'Fredoka', sans-serif;
+        }
+        body {
+            font-family: var(--font-ar);
+            background: linear-gradient(135deg, #f8e8dc 0%, #fdf6f0 50%, #d8f3ec 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .en-font {
+            font-family: var(--font-en);
+            direction: ltr;
+        }
+
+        /* Worksheet Paper Container */
+        .worksheet-sheet {
+            background-color: #fbf5ef;
+            border: 3px solid #e7d8c9;
+            box-shadow: 0 20px 45px -15px rgba(30, 41, 59, 0.18);
+        }
+
+        /* Purple Table Borders matching the image */
+        .vocab-table-border {
+            border: 2px solid #9b6b9e;
+        }
+        .vocab-cell-border {
+            border-bottom: 1.5px solid #9b6b9e;
+            border-left: 1.5px solid #9b6b9e;
+        }
+
+        /* Active Speaking Card Glow */
+        @keyframes speakingPulse {
+            0%, 100% {
+                background-color: #fef9c3;
+                box-shadow: inset 0 0 0 3px #eab308, 0 8px 20px -4px rgba(234, 179, 8, 0.35);
+            }
+            50% {
+                background-color: #fef08a;
+                box-shadow: inset 0 0 0 4px #ca8a04, 0 12px 26px -4px rgba(202, 138, 4, 0.45);
+            }
+        }
+        .cell-speaking {
+            animation: speakingPulse 1.5s infinite ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .word-highlight-pill {
+            background-color: #fde047 !important;
+            color: #0f172a !important;
+            padding: 1px 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(234, 179, 8, 0.45);
+            transition: all 0.2s ease;
+        }
+
+        .word-token {
+            display: inline-block;
+            padding: 1px 3.5px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+        .word-token:hover {
+            background-color: rgba(147, 51, 234, 0.14);
+            color: #581c87;
+        }
+        .word-token-active {
+            background-color: #facc15 !important;
+            color: #0f172a !important;
+            font-weight: 700;
+            transform: scale(1.08);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.14);
+        }
+
+        /* Sound Wave Indicator */
+        @keyframes soundWaveBar {
+            0%, 100% { height: 5px; }
+            50% { height: 18px; }
+        }
+        .sound-wave span {
+            display: inline-block;
+            width: 3.5px;
+            background-color: currentColor;
+            border-radius: 999px;
+            animation: soundWaveBar 0.7s infinite ease-in-out;
+        }
+        .sound-wave span:nth-child(2) { animation-delay: 0.15s; }
+        .sound-wave span:nth-child(3) { animation-delay: 0.3s; }
+        .sound-wave span:nth-child(4) { animation-delay: 0.45s; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #ffffff !important; }
+            .worksheet-sheet { box-shadow: none !important; border: 1px solid #9b6b9e !important; }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <header class="no-print sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-purple-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand & Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-800 via-purple-600 to-orange-400 text-white flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-book-open-reader text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 class="text-base sm:text-xl font-black text-slate-900">
+                            الدرس الناطق: مفردات القراءة <span class="en-font text-purple-700">(Reading Vocabulary)</span>
+                        </h1>
+                        <span class="bg-purple-100 text-purple-900 text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-purple-300">
+                            26 مفردة + جدول الأفعال V1/V2 + المعنى بالإنجليزية
+                        </span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-500">
+                        إعداد المعلم ماجد السويهري • <span class="en-font text-orange-600 font-bold">LANGUA LEARN (Learn, Grow, Succeed)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Global Lesson Playback Controls -->
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="toggleAutoPlayLesson('both')" id="btn-autoplay" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-circle-play text-base"></i>
+                    <span>قراءة جميع المفردات + المعنى (29)</span>
+                </button>
+
+                <button onclick="toggleAutoPlayLesson('word')" id="btn-autoplay-words" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-purple-700 hover:bg-purple-800 text-white shadow-md transition flex items-center gap-2" title="قراءة جميع المفردات الإنجليزية فقط بالتتابع مع التظليل المتزامن">
+                    <i class="fa-solid fa-list-ol"></i>
+                    <span>قراءة جميع المفردات فقط</span>
+                </button>
+
+                <!-- Reading Mode Selector -->
+                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-extrabold">
+                    <button onclick="setReadMode('both')" id="rm-both" class="px-2.5 py-1.5 rounded-lg bg-purple-700 text-white transition" title="قراءة الكلمة ثم معناها باللغة الإنجليزية">
+                        الكلمة + المعنى EN
+                    </button>
+                    <button onclick="setReadMode('meaning')" id="rm-meaning" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition" title="قراءة المعنى باللغة الإنجليزية فقط">
+                        المعنى EN فقط
+                    </button>
+                    <button onclick="setReadMode('word')" id="rm-word" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition" title="قراءة الكلمة فقط">
+                        الكلمة فقط
+                    </button>
+                </div>
+
+                <!-- Speed Button -->
+                <button onclick="cycleSpeechRate()" class="px-3 py-2 rounded-xl text-xs font-extrabold bg-amber-50 border-2 border-amber-300 text-amber-900 hover:bg-amber-100 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gauge-high text-amber-600"></i>
+                    <span id="speed-label">السرعة: هادئة (0.76x)</span>
+                </button>
+
+                <!-- Stop Button -->
+                <button onclick="stopAllSpeech()" class="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 transition" title="إيقاف القراءة">
+                    <i class="fa-solid fa-stop"></i>
+                </button>
+
+                <!-- GitHub Pages Ready Modal Trigger -->
+                <button onclick="toggleGithubModal()" class="px-3 py-2 rounded-xl text-xs font-extrabold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition flex items-center gap-1.5" title="إعدادات النشر المباشر على GitHub Pages">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span class="hidden sm:inline">GitHub</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+
+        <!-- Calm Educational Voice Studio Bar -->
+        <div class="no-print mb-4 bg-white/90 backdrop-blur rounded-2xl p-3 sm:px-5 shadow-sm border-2 border-purple-200/80 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-base shadow-inner">
+                    <i class="fa-solid fa-headphones-simple"></i>
+                </span>
+                <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-xs sm:text-sm font-black text-slate-800">نمط الصوت التعليمي الهادئ:</span>
+                        <span id="active-voice-badge" class="text-[11px] font-extrabold bg-purple-50 text-purple-800 px-2.5 py-0.5 rounded-full border border-purple-200 en-font">
+                            Detecting calm voice...
+                        </span>
+                    </div>
+                    <p class="text-[11px] font-bold text-slate-500">نطق تعليمي هادئ وواضح للمفردة يتبعه قراءة معناها باللغة الإنجليزية مع التظليل الفوري</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Calm Voice Profiles -->
+                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-extrabold">
+                    <button onclick="setCalmVoiceProfile('calm_female')" id="vp-calm_female" class="px-3 py-1.5 rounded-lg bg-purple-700 text-white shadow-sm transition flex items-center gap-1">
+                        <span>🌸 معلمة هادئة</span>
+                    </button>
+                    <button onclick="setCalmVoiceProfile('calm_male')" id="vp-calm_male" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1">
+                        <span>👨‍🏫 معلم هادئ</span>
+                    </button>
+                    <button onclick="setCalmVoiceProfile('extra_calm')" id="vp-extra_calm" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1">
+                        <span>🌿 تأسيسي متأنٍ جداً</span>
+                    </button>
+                </div>
+
+                <!-- Browser Voice Selector -->
+                <select id="voice-select-dropdown" onchange="onManualVoiceSelect(this.value)" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-50 border border-slate-300 text-slate-800 focus:outline-none focus:border-purple-500 en-font max-w-[200px]" dir="ltr">
+                    <option value="auto">✨ Auto Best Calm Voice</option>
+                </select>
+
+                <!-- Toggle English Meanings Visibility in Table -->
+                <button onclick="toggleMeaningsDisplay()" id="btn-toggle-meanings" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-extrabold transition flex items-center gap-1">
+                    <i class="fa-solid fa-eye text-amber-600"></i>
+                    <span>المعنى EN: ظاهر</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Live Speaking Status Banner & View Switcher -->
+        <div id="live-reader-bar" class="no-print mb-5 bg-slate-900 text-white rounded-3xl p-4 shadow-lg border-2 border-purple-400/40 flex flex-col gap-3">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5 flex-1 min-w-[260px]">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-700 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                        🎙️
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider bg-purple-500/30 text-purple-200 px-2.5 py-0.5 rounded-full border border-purple-400/30">
+                                القارئ المتزامن بالكلمات (Word-Sync Reader)
+                            </span>
+                            <span id="sync-engine-badge" class="text-[10px] font-extrabold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30">
+                                ✓ متزامن على GitHub وجميع المتصفحات
+                            </span>
+                            <div id="sound-wave-indicator" class="sound-wave hidden items-center gap-0.5 text-amber-400 h-5 px-1">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <!-- Live Word-by-Word Synchronized Teleprompter -->
+                        <div id="live-speech-text" class="text-base sm:text-xl font-bold text-amber-300 mt-1.5 en-font leading-relaxed" dir="ltr">
+                            Click any vocabulary row, English meaning, or "Read All" to listen with live word sync! 🔊
+                        </div>
+                        <div id="live-speech-ar" class="text-xs font-bold text-slate-300 mt-0.5">
+                            اضغط على أي مفردة أو شغل قراءة جميع المفردات لمتابعة التظليل الصوتي المتزامن كلمة بكلمة
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Tabs -->
+                <div class="flex flex-wrap items-center gap-1.5 bg-slate-800 p-1.5 rounded-2xl border border-slate-700">
+                    <button onclick="switchView('sheet')" id="tab-sheet" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-400 text-slate-950 shadow transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-table-list"></i>
+                        <span>جدول المفردات الناطق (الورقة المصورة)</span>
+                    </button>
+                    <button onclick="switchView('spotlight')" id="tab-spotlight" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span>سبورة الشرح واختبار النطق</span>
+                    </button>
+                    <button onclick="switchView('quiz')" id="tab-quiz" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>تحدي المعاني بالإنجليزية</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Auto-Play Sequence Progress & Step Controls -->
+            <div id="autoplay-progress-bar-wrap" class="hidden pt-2.5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                    <button onclick="stepAutoPlay(-1)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition">
+                        <i class="fa-solid fa-backward-step ml-1"></i>السابق
+                    </button>
+                    <button onclick="stopAllSpeech()" class="px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-extrabold transition">
+                        <i class="fa-solid fa-stop ml-1"></i>إيقاف
+                    </button>
+                    <button onclick="stepAutoPlay(1)" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition">
+                        التالي<i class="fa-solid fa-forward-step mr-1"></i>
+                    </button>
+                    <span id="autoplay-step-counter" class="text-xs font-black text-amber-300 mr-2">1 / 29</span>
+                </div>
+                <div class="flex-1 max-w-md bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-700">
+                    <div id="autoplay-progress-fill" class="h-full bg-gradient-to-r from-emerald-400 to-amber-400 transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================================= -->
+        <!-- VIEW 1: INTERACTIVE WORKSHEET TABLE VIEW (READING VOCABULARY + V1/V2)   -->
+        <!-- ======================================================================= -->
+        <section id="view-sheet" class="block">
+            <div class="worksheet-sheet rounded-[2.25rem] p-4 sm:p-8 md:p-10 relative overflow-hidden">
+
+                <!-- Decorative Top-Left & Bottom-Right Zigzags matching the image -->
+                <div class="pointer-events-none select-none hidden sm:block absolute top-5 left-6 opacity-75">
+                    <svg width="100" height="44" viewBox="0 0 100 44" fill="none">
+                        <path d="M4 18 L20 6 L36 18 L52 6 L68 18 L84 6" stroke="#e9a89b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 36 L28 24 L44 36 L60 24 L76 36 L92 24" stroke="#8cd4c8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <!-- Worksheet Top Header: Reading Vocabulary + Langua Learn Logo -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 relative z-10" dir="ltr">
+                    <div class="hidden sm:block w-36"></div>
+
+                    <!-- Center Title -->
+                    <div class="text-center">
+                        <h2 class="en-font text-2xl sm:text-4xl font-black text-slate-950 tracking-wide">
+                            Reading Vocabulary
+                        </h2>
+                        <p class="text-xs sm:text-sm font-extrabold text-purple-800 mt-1" dir="rtl">
+                            مفردات القراءة الأساسية + المعنى باللغة الإنجليزية (اضغط على أي صف للاستماع 🔊)
+                        </p>
+                    </div>
+
+                    <!-- Top-Right Langua Learn Logo matching the image -->
+                    <div class="flex items-center gap-2.5 bg-white/80 px-3.5 py-2 rounded-2xl border border-orange-200 shadow-sm">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-orange-400 to-purple-800 text-white flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div class="text-left leading-tight">
+                            <div class="en-font font-black text-base text-orange-400 tracking-wider">LANGUA</div>
+                            <div class="en-font font-black text-base text-purple-950 tracking-wider -mt-1">LEARN</div>
+                            <div class="en-font text-[9px] font-bold text-slate-400">Learn, Grow, Succeed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Filter / Column Play Controls (Hidden in Print) -->
+                <div class="no-print mb-4 flex flex-wrap items-center justify-between gap-2 bg-white/85 p-3 rounded-2xl border border-purple-200/80 shadow-sm">
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <button onclick="playAllVocabularySequential('both')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-play"></i>
+                            <span>قراءة كل المفردات ومعانيها بالترتيب (29)</span>
+                        </button>
+                        <button onclick="playAllVocabularySequential('word')" class="px-3 py-1.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-extrabold text-xs shadow-sm transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>قراءة جميع المفردات فقط (29)</span>
+                        </button>
+                        <button onclick="playColumnSequence('left')" class="px-3 py-1.5 rounded-xl bg-purple-100 hover:bg-purple-200 text-purple-900 font-extrabold text-xs transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-table-columns text-purple-700"></i>
+                            <span>العمود الأيسر (13)</span>
+                        </button>
+                        <button onclick="playColumnSequence('right')" class="px-3 py-1.5 rounded-xl bg-teal-100 hover:bg-teal-200 text-teal-900 font-extrabold text-xs transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-table-columns text-teal-700"></i>
+                            <span>العمود الأيمن (13)</span>
+                        </button>
+                        <button onclick="playColumnSequence('verbs')" class="px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-extrabold text-xs transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-bolt text-amber-700"></i>
+                            <span>جدول الأفعال V1/V2 (3)</span>
+                        </button>
+                    </div>
+                    <div class="text-xs font-bold text-slate-600">
+                        💡 اضغط على **أي كلمة مفردة** داخل الجدول أو المعنى الإنجليزي لنطقها وتظليلها فوراً
+                    </div>
+                </div>
+
+                <!-- MAIN 13x2 READING VOCABULARY TABLE (Matching exact left & right columns of the image) -->
+                <div class="vocab-table-border rounded-xl overflow-hidden bg-[#fbf5ef]" dir="ltr">
+                    <div id="vocab-main-table-grid" class="grid grid-cols-1 md:grid-cols-2">
+                        <!-- Populated dynamically by JS (13 rows x 2 columns = 26 items) -->
+                    </div>
+                </div>
+
+                <!-- BOTTOM V1 / V2 VERBS TABLE (Matching exact bottom table of the image) -->
+                <div class="mt-8 max-w-3xl mx-auto" dir="ltr">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="en-font text-xs sm:text-sm font-black text-purple-900 bg-purple-100 px-3 py-1 rounded-full border border-purple-200">
+                            Present & Past Verbs (V1 / V2)
+                        </span>
+                        <span class="text-xs font-extrabold text-slate-600" dir="rtl">
+                            جدول تصريف الأفعال (المضارع V1 والماضي V2 مع المعنى بالإنجليزية)
+                        </span>
+                    </div>
+
+                    <div class="vocab-table-border rounded-xl overflow-hidden bg-[#fbf5ef]">
+                        <!-- Header Row: V1 | V2 -->
+                        <div class="grid grid-cols-2 border-b-2 border-[#9b6b9e] bg-purple-100/50">
+                            <div class="p-3 sm:px-5 font-black text-base sm:text-lg text-slate-900 en-font border-r border-[#9b6b9e] flex items-center justify-between">
+                                <span>V1 <span class="text-xs font-bold text-purple-700">(Present / المصدر)</span></span>
+                                <i class="fa-solid fa-volume-high text-purple-600 text-sm"></i>
+                            </div>
+                            <div class="p-3 sm:px-5 font-black text-base sm:text-lg text-slate-900 en-font flex items-center justify-between">
+                                <span>V2 <span class="text-xs font-bold text-amber-800">(Past / الماضي)</span></span>
+                                <i class="fa-solid fa-clock-rotate-left text-amber-700 text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- V1 / V2 Rows -->
+                        <div id="verbs-table-body">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheet Bottom Footer -->
+                <div class="mt-8 pt-4 border-t border-purple-200/70 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-2 text-slate-800 font-black text-sm sm:text-base">
+                        <span class="w-3 h-3 rounded-full bg-purple-600 inline-block"></span>
+                        <span>إعداد المعلم ماجد السويهري • <span class="en-font text-purple-800">Langua Learn</span></span>
+                    </div>
+                    <div class="no-print flex flex-wrap items-center gap-2">
+                        <button onclick="playAllMeaningsOnly()" class="px-4 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 font-extrabold text-xs sm:text-sm border border-purple-200 transition flex items-center gap-2">
+                            <i class="fa-solid fa-ear-listen"></i>
+                            <span>قراءة جميع المعاني بالإنجليزية متتالية</span>
+                        </button>
+                        <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition flex items-center gap-2">
+                            <i class="fa-solid fa-print"></i>
+                            <span>طباعة الورقة مع المعاني</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- VIEW 2: SMARTBOARD SPOTLIGHT & PRONUNCIATION STUDIO                     -->
+        <!-- ======================================================================= -->
+        <section id="view-spotlight" class="hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Active Giant Card (8 cols) -->
+                <div class="lg:col-span-8">
+                    <div id="spotlight-card-box" class="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 rounded-[2.25rem] p-6 sm:p-9 text-white shadow-2xl border-4 border-purple-300/40 relative overflow-hidden">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+
+                    <!-- Navigation & Microphone Bar -->
+                    <div class="bg-white rounded-3xl p-4 sm:p-5 mt-4 shadow-md border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="prevSpotlight()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-sm transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>المفردة السابقة</span>
+                        </button>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="startPronunciationCheck('word')" class="px-4 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border-2 border-rose-200 font-extrabold text-xs sm:text-sm transition flex items-center gap-2">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>اختبر نطقك للمفردة</span>
+                            </button>
+                            <button onclick="startPronunciationCheck('meaning')" class="px-4 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border-2 border-purple-200 font-extrabold text-xs sm:text-sm transition flex items-center gap-2">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                                <span>اقرأ المعنى بالإنجليزية</span>
+                            </button>
+                        </div>
+
+                        <button onclick="nextSpotlight()" class="px-5 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-extrabold text-sm shadow transition flex items-center gap-2">
+                            <span>المفردة التالية</span>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+
+                    <div id="mic-feedback-box" class="hidden mt-4 p-4 rounded-2xl border-2 font-bold text-sm"></div>
+                </div>
+
+                <!-- All 29 Items Quick List Sidebar (4 cols) -->
+                <aside class="lg:col-span-4 bg-white rounded-3xl p-4 sm:p-5 shadow-lg border-2 border-purple-100">
+                    <h3 class="font-black text-base text-slate-800 mb-3 pb-2 border-b border-slate-100 flex items-center justify-between">
+                        <span><i class="fa-solid fa-list-check text-purple-700 ml-1.5"></i>قائمة المفردات والأفعال (29)</span>
+                        <span id="spotlight-counter" class="text-xs bg-purple-100 text-purple-900 px-2.5 py-0.5 rounded-full font-extrabold">1 / 29</span>
+                    </h3>
+                    <div id="spotlight-sidebar-list" class="space-y-2 max-h-[520px] overflow-y-auto pr-1"></div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ======================================================================= -->
+        <!-- VIEW 3: INTERACTIVE ENGLISH MEANING QUIZ                                -->
+        <!-- ======================================================================= -->
+        <section id="view-quiz" class="hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-purple-100 max-w-4xl mx-auto">
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-slate-200">
+                    <div>
+                        <span class="bg-purple-100 text-purple-800 text-xs font-extrabold px-3 py-1 rounded-full">تدريب ناطق على معاني مفردات القراءة بالإنجليزية</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">استمع إلى المعنى باللغة الإنجليزية واختر المفردة الصحيحة! 🎯</h3>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-200">
+                        <div class="text-xs font-bold text-slate-500">النتيجة:</div>
+                        <div id="quiz-score-badge" class="text-lg font-black text-emerald-600">0 / 29</div>
+                        <button onclick="resetQuiz()" class="text-xs font-bold text-purple-700 hover:underline mr-2">إعادة التدريب</button>
+                    </div>
+                </div>
+
+                <div id="quiz-question-box"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GitHub Pages Ready & Deployment Helper Modal -->
+    <div id="github-modal" class="no-print fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border-2 border-purple-200">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-10 h-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-xl">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-base sm:text-lg text-slate-900">جاهز للنشر على GitHub Pages</h3>
+                        <p class="text-xs font-bold text-emerald-700">مزامنة الكلمات مع الصوت تعمل 100% على روابط github.io</p>
+                    </div>
+                </div>
+                <button onclick="toggleGithubModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm font-bold text-slate-700 leading-relaxed">
+                <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950">
+                    <div class="font-black mb-1"><i class="fa-solid fa-circle-check text-emerald-600 ml-1"></i>كيف تعمل مزامنة الكلمات على GitHub Pages؟</div>
+                    <p class="text-xs text-emerald-800">
+                        تم تزويد هذا الملف بمحرك مزامنة مزدوج (`Native Boundary + Smart Cadence Timer`) بحيث يتم تظليل كل كلمة باللون الأصفر أثناء نطقها حتى في المتصفحات أو الهواتف التي لا تدعم أحداث التزامن التقليدية، مع حماية ضد توقف الصوت التلقائي في متصفح Chrome.
+                    </p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                    <div class="font-black text-slate-900">خطوات رفع الدرس على GitHub Pages في دقيقة واحدة:</div>
+                    <ol class="list-decimal list-inside space-y-1 text-xs text-slate-600">
+                        <li>قم بتحميل الملف باسم <code class="en-font bg-slate-200 px-1.5 py-0.5 rounded text-slate-900">index.html</code> عبر الزر بالأسفل.</li>
+                        <li>ارفع الملف إلى مستودعك (Repository) في GitHub.</li>
+                        <li>من إعدادات المستودع <strong>Settings ➔ Pages</strong> اختر الفرع <strong>main</strong> ثم <strong>Save</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-end gap-2">
+                <button onclick="copySourceForGithub()" id="btn-copy-gh" class="px-4 py-2.5 rounded-xl bg-purple-100 hover:bg-purple-200 text-purple-900 font-extrabold text-xs sm:text-sm transition flex items-center gap-2">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>نسخ الكود الكامل</span>
+                </button>
+                <button onclick="downloadAsIndexHtml()" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm shadow transition flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>تحميل كملف index.html جاهز لـ GitHub</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================================
+        // DATASET: ALL 26 READING VOCABULARY ITEMS (13 ROWS x 2 COLUMNS) + 3 V1/V2 PAIRS
+        // Ordered row-by-row (Left cell, Right cell) matching the exact worksheet table
+        // ============================================================================
+        const readingVocabRows = [
+            // Row 1
+            {
+                left: {
+                    id: 1,
+                    word: "interest",
+                    arWord: "اهتمام",
+                    isBold: false,
+                    enMeaning: "wanting to know or learn about something",
+                    arMeaning: "الرغبة في معرفة أو تعلم شيء ما",
+                    phonetic: "/ˈɪn.trəst/",
+                    icon: "💡",
+                    exampleEn: "She has a great interest in reading and art.",
+                    exampleAr: "لديها اهتمام كبير بالقراءة والفن."
+                },
+                right: {
+                    id: 2,
+                    word: "unusual result",
+                    arWord: "نتيجة غير اعتيادية",
+                    isBold: true,
+                    enMeaning: "an outcome that is surprising and not normal",
+                    arMeaning: "نتيجة مدهشة أو مختلفة عن المعتاد",
+                    phonetic: "/ʌnˈjuː.ʒu.əl rɪˈzʌlt/",
+                    icon: "✨",
+                    exampleEn: "The science experiment gave an unusual result.",
+                    exampleAr: "أعطت التجربة العلمية نتيجة غير اعتيادية."
+                }
+            },
+            // Row 2
+            {
+                left: {
+                    id: 3,
+                    word: "model",
+                    arWord: "نموذج",
+                    isBold: false,
+                    enMeaning: "a small copy or design of something",
+                    arMeaning: "نسخة مصغرة أو تصميم يمثل شيئاً ما",
+                    phonetic: "/ˈmɒd.əl/",
+                    icon: "🛩️",
+                    exampleEn: "He built a paper model of an airplane.",
+                    exampleAr: "صنع نموذجاً ورقياً لطائرة."
+                },
+                right: {
+                    id: 4,
+                    word: "focus",
+                    arWord: "تركيز / يركز",
+                    isBold: false,
+                    enMeaning: "to give all your attention to one thing",
+                    arMeaning: "توجيه كامل انتباهك وذهنك نحو شيء واحد",
+                    phonetic: "/ˈfəʊ.kəs/",
+                    icon: "🎯",
+                    exampleEn: "Origami helps students focus carefully.",
+                    exampleAr: "يساعد فن طي الورق الطلاب على التركيز بعناية."
+                }
+            },
+            // Row 3
+            {
+                left: {
+                    id: 5,
+                    word: "horrible day",
+                    arWord: "يوم مريع",
+                    isBold: false,
+                    enMeaning: "a very bad or unpleasant day",
+                    arMeaning: "يوم سيئ للغاية أو غير سار",
+                    phonetic: "/ˈhɒr.ə.bəl deɪ/",
+                    icon: "🌧️",
+                    exampleEn: "I missed the bus and had a horrible day.",
+                    exampleAr: "فاتتني الحافلة وكان يوماً مريعاً."
+                },
+                right: {
+                    id: 6,
+                    word: "different shapes",
+                    arWord: "أشكال مختلفة",
+                    isBold: false,
+                    enMeaning: "many forms like stars, birds, or boxes",
+                    arMeaning: "أشكال متنوعة مثل النجوم أو الطيور أو المربعات",
+                    phonetic: "/ˈdɪf.ər.ənt ʃeɪps/",
+                    icon: "🔷",
+                    exampleEn: "You can fold paper into different shapes.",
+                    exampleAr: "يمكنك طي الورق إلى أشكال مختلفة."
+                }
+            },
+            // Row 4
+            {
+                left: {
+                    id: 7,
+                    word: "Sidewalk",
+                    arWord: "رصيف",
+                    isBold: false,
+                    enMeaning: "a paved path for walking beside a street",
+                    arMeaning: "ممر مخصص للمشاة بجانب الطريق",
+                    phonetic: "/ˈsaɪd.wɔːk/",
+                    icon: "🚶",
+                    exampleEn: "Always walk safely on the sidewalk.",
+                    exampleAr: "امشِ دائماً بأمان على الرصيف."
+                },
+                right: {
+                    id: 8,
+                    word: "normally",
+                    arWord: "عادة",
+                    isBold: false,
+                    enMeaning: "usually, or in the regular way",
+                    arMeaning: "في العادة أو بالطريقة المعتادة",
+                    phonetic: "/ˈnɔː.mə.li/",
+                    icon: "🔄",
+                    exampleEn: "I normally read a book before going to sleep.",
+                    exampleAr: "أنا عادةً أقرأ كتاباً قبل النوم."
+                }
+            },
+            // Row 5
+            {
+                left: {
+                    id: 9,
+                    word: "Origami",
+                    arWord: "فن طي الورق",
+                    isBold: true,
+                    enMeaning: "the Japanese art of folding paper into shapes",
+                    arMeaning: "الفن الياباني لتشكيل الورق عن طريق طيّه",
+                    phonetic: "/ˌɒr.ɪˈɡɑː.mi/",
+                    icon: "🦢",
+                    exampleEn: "Origami is the art of folding paper into lovely shapes.",
+                    exampleAr: "الأوريغامي هو فن طي الورق إلى أشكال جميلة."
+                },
+                right: {
+                    id: 10,
+                    word: "art form",
+                    arWord: "شكل فني",
+                    isBold: false,
+                    enMeaning: "a creative way of making art",
+                    arMeaning: "طريقة إبداعية للتعبير الفني كالرسم أو التشكيل",
+                    phonetic: "/ˈɑːt ˌfɔːm/",
+                    icon: "🎨",
+                    exampleEn: "Paper folding is a traditional art form.",
+                    exampleAr: "طي الورق هو شكل فني تقليدي."
+                }
+            },
+            // Row 6
+            {
+                left: {
+                    id: 11,
+                    word: "Recommendation",
+                    arWord: "توصية",
+                    isBold: false,
+                    enMeaning: "helpful advice about what is good to try",
+                    arMeaning: "نصيحة أو مقترح مفيد لتجربة شيء جيد",
+                    phonetic: "/ˌrek.ə.menˈdeɪ.ʃən/",
+                    icon: "👍",
+                    exampleEn: "Thank you for your book recommendation.",
+                    exampleAr: "شكراً لك على توصيتك بهذا الكتاب."
+                },
+                right: {
+                    id: 12,
+                    word: "introducing",
+                    arWord: "تعريف",
+                    isBold: false,
+                    enMeaning: "presenting something for the first time",
+                    arMeaning: "تقديم أو تعريف شخص بشيء جديد لأول مرة",
+                    phonetic: "/ˌɪn.trəˈdjuː.sɪŋ/",
+                    icon: "👋",
+                    exampleEn: "The teacher is introducing a new hobby today.",
+                    exampleAr: "المعلم يقوم بالتعريف بهواية جديدة اليوم."
+                }
+            },
+            // Row 7
+            {
+                left: {
+                    id: 13,
+                    word: "Practice",
+                    arWord: "يمارس - ممارسة",
+                    isBold: false,
+                    enMeaning: "doing an activity regularly to improve",
+                    arMeaning: "التدرب المستمر على مهارة لإتقانها",
+                    phonetic: "/ˈpræk.tɪs/",
+                    icon: "🏅",
+                    exampleEn: "With daily practice, your English will become excellent.",
+                    exampleAr: "مع الممارسة اليومية، ستصبح لغتك الإنجليزية ممتازة."
+                },
+                right: {
+                    id: 14,
+                    word: "benefits",
+                    arWord: "فوائد",
+                    isBold: false,
+                    enMeaning: "good and helpful effects that improve your life",
+                    arMeaning: "نتائج إيجابية ومنافع تعود عليك بالخير",
+                    phonetic: "/ˈben.ɪ.fɪts/",
+                    icon: "🌟",
+                    exampleEn: "Reading every day has many great benefits.",
+                    exampleAr: "القراءة كل يوم لها فوائد عظيمة كثيرة."
+                }
+            },
+            // Row 8
+            {
+                left: {
+                    id: 15,
+                    word: "Relaxing",
+                    arWord: "مريح",
+                    isBold: false,
+                    enMeaning: "making you feel calm, peaceful, and rested",
+                    arMeaning: "يبعث على الهدوء والراحة ويزيل التوتر",
+                    phonetic: "/rɪˈlæk.sɪŋ/",
+                    icon: "🍵",
+                    exampleEn: "Drawing in nature is a very relaxing activity.",
+                    exampleAr: "الرسم في الطبيعة نشاط مريح جداً."
+                },
+                right: {
+                    id: 16,
+                    word: "hobby",
+                    arWord: "هواية",
+                    isBold: true,
+                    enMeaning: "an activity you enjoy doing in your free time",
+                    arMeaning: "نشاط ممتع تمارسه في وقت فراغك",
+                    phonetic: "/ˈhɒb.i/",
+                    icon: "🧩",
+                    exampleEn: "My favorite hobby is collecting souvenirs.",
+                    exampleAr: "هوايتي المفضلة هي جمع التذكارات."
+                }
+            },
+            // Row 9
+            {
+                left: {
+                    id: 17,
+                    word: "Scrapbooking",
+                    arWord: "عمل ألبوم ذكريات",
+                    isBold: true,
+                    enMeaning: "keeping photos and memories in a decorated album",
+                    arMeaning: "حفظ الصور والذكريات وتزيينها في دفتر خاص",
+                    phonetic: "/ˈskræp.bʊk.ɪŋ/",
+                    icon: "📒",
+                    exampleEn: "Scrapbooking is a fun way to save family photos.",
+                    exampleAr: "عمل ألبوم الذكريات طريقة ممتعة لحفظ صور العائلة."
+                },
+                right: {
+                    id: 18,
+                    word: "rock climbing",
+                    arWord: "تسلق الصخور",
+                    isBold: true,
+                    enMeaning: "the sport of climbing up high rocks or mountains",
+                    arMeaning: "رياضة تسلق الجبال والمنحدرات الصخرية",
+                    phonetic: "/ˈrɒk ˌklaɪ.mɪŋ/",
+                    icon: "🧗",
+                    exampleEn: "Rock climbing is an exciting outdoor sport.",
+                    exampleAr: "تسلق الصخور رياضة خارجية مشوقة."
+                }
+            },
+            // Row 10
+            {
+                left: {
+                    id: 19,
+                    word: "Souvenirs",
+                    arWord: "تذكارات",
+                    isBold: true,
+                    enMeaning: "items you keep to remember a special trip or place",
+                    arMeaning: "أشياء تحتفظ بها لتذكر رحلة أو مكان مميز",
+                    phonetic: "/ˌsuː.vənˈɪəz/",
+                    icon: "🎁",
+                    exampleEn: "We bought lovely souvenirs from our trip.",
+                    exampleAr: "اشترينا تذكارات جميلة من رحلتنا."
+                },
+                right: {
+                    id: 20,
+                    word: "nature",
+                    arWord: "الطبيعة",
+                    isBold: false,
+                    enMeaning: "the natural world of trees, rivers, and animals",
+                    arMeaning: "العالم الطبيعي من أشجار وأنهار وحيوانات",
+                    phonetic: "/ˈneɪ.tʃər/",
+                    icon: "🌿",
+                    exampleEn: "We love spending the weekend in nature.",
+                    exampleAr: "نحن نحب قضاء عطلة نهاية الأسبوع في الطبيعة."
+                }
+            },
+            // Row 11
+            {
+                left: {
+                    id: 21,
+                    word: "Personalized",
+                    arWord: "شخصي",
+                    isBold: false,
+                    enMeaning: "made or designed specially for one person",
+                    arMeaning: "مصمم أو مخصص لشخص معين باسمه أو ذوقه",
+                    phonetic: "/ˈpɜː.sən.əl.aɪzd/",
+                    icon: "🏷️",
+                    exampleEn: "She made a personalized notebook with her name on it.",
+                    exampleAr: "صنعت دفتراً شخصياً يحمل اسمها."
+                },
+                right: {
+                    id: 22,
+                    word: "adventure",
+                    arWord: "المغامرة",
+                    isBold: false,
+                    enMeaning: "an exciting and brave journey or experience",
+                    arMeaning: "تجربة أو رحلة مشوقة مليئة بالحماس",
+                    phonetic: "/ədˈven.tʃər/",
+                    icon: "🧭",
+                    exampleEn: "Camping in the desert was a great adventure.",
+                    exampleAr: "كان التخييم في الصحراء مغامرة رائعة."
+                }
+            },
+            // Row 12
+            {
+                left: {
+                    id: 23,
+                    word: "Activity",
+                    arWord: "نشاط",
+                    isBold: false,
+                    enMeaning: "something you do for fun, learning, or exercise",
+                    arMeaning: "عمل أو تمرين تقوم به للمتعة أو التعلم",
+                    phonetic: "/ækˈtɪv.ə.ti/",
+                    icon: "⚽",
+                    exampleEn: "Reading is a wonderful classroom activity.",
+                    exampleAr: "القراءة نشاط صفي رائع."
+                },
+                right: {
+                    id: 24,
+                    word: "explore",
+                    arWord: "يستكشف",
+                    isBold: false,
+                    enMeaning: "to travel around a new place to learn about it",
+                    arMeaning: "يتجول في مكان جديد لاكتشافه والتعرف عليه",
+                    phonetic: "/ɪkˈsplɔːr/",
+                    icon: "🔭",
+                    exampleEn: "Let us explore the mountains and forests.",
+                    exampleAr: "دعونا نستكشف الجبال والغابات."
+                }
+            },
+            // Row 13
+            {
+                left: {
+                    id: 25,
+                    word: "follow instructions",
+                    arWord: "يتبع التعليمات",
+                    isBold: false,
+                    enMeaning: "to do step by step what the directions say",
+                    arMeaning: "تطبيق الخطوات والإرشادات بالترتيب الصحيح",
+                    phonetic: "/ˈfɒl.əʊ ɪnˈstrʌk.ʃənz/",
+                    icon: "📋",
+                    exampleEn: "Follow instructions carefully to fold the paper.",
+                    exampleAr: "اتبع التعليمات بعناية لطي الورقة."
+                },
+                right: {
+                    id: 26,
+                    word: "surprise",
+                    arWord: "يفاجأ",
+                    isBold: false,
+                    enMeaning: "something unexpected that makes you amazed",
+                    arMeaning: "حدث غير متوقع يثير الدهشة والسرور",
+                    phonetic: "/səˈpraɪz/",
+                    icon: "🎉",
+                    exampleEn: "The gift was a wonderful surprise for everyone.",
+                    exampleAr: "كانت الهدية مفاجأة رائعة للجميع."
+                }
+            }
+        ];
+
+        // Bottom V1 / V2 Verbs Table Dataset
+        const verbRows = [
+            {
+                id: 27,
+                v1: "Find",
+                arV1: "يجد",
+                v2: "found",
+                arV2: "وجد",
+                word: "Find / found",
+                arWord: "يجد / وجد",
+                enMeaning: "to discover or see something you were looking for",
+                arMeaning: "يكتشف أو يعثر على شيء (المضارع Find والماضي found)",
+                phonetic: "/faɪnd/ ➔ /faʊnd/",
+                icon: "🔍",
+                exampleEn: "Present: I find a new hobby. Past: Yesterday, I found a lovely souvenir.",
+                exampleAr: "المضارع: أجد هواية جديدة. الماضي: بالأمس وجدت تذكاراً جميلاً."
+            },
+            {
+                id: 28,
+                v1: "Make me",
+                arV1: "يجعلني",
+                v2: "made me",
+                arV2: "جعلني",
+                word: "Make me / made me",
+                arWord: "يجعلني / جعلني",
+                enMeaning: "to cause me to feel happy, calm, or excited",
+                arMeaning: "يسبب لي شعوراً معيناً (المضارع Make me والماضي made me)",
+                phonetic: "/meɪk miː/ ➔ /meɪd miː/",
+                icon: "😊",
+                exampleEn: "Present: Hobbies make me happy. Past: The trip made me very relaxed.",
+                exampleAr: "المضارع: الهوايات تجعلني سعيداً. الماضي: الرحلة جعلتني مسترخياً جداً."
+            },
+            {
+                id: 29,
+                v1: "Meet",
+                arV1: "يقابل",
+                v2: "met",
+                arV2: "قابل",
+                word: "Meet / met",
+                arWord: "يقابل / قابل",
+                enMeaning: "to come together and see friends or new people",
+                arMeaning: "يلتقي بشخص ما (المضارع Meet والماضي met)",
+                phonetic: "/miːt/ ➔ /met/",
+                icon: "🤝",
+                exampleEn: "Present: I meet my friends at school. Past: Last week, I met a friendly artist.",
+                exampleAr: "المضارع: أقابل أصدقائي في المدرسة. الماضي: الأسبوع الماضي قابلت فناناً ودوداً."
+            }
+        ];
+
+        // Flatten all 29 items for Auto-Play, Spotlight, and Quiz
+        const allItems = [];
+        readingVocabRows.forEach(row => {
+            allItems.push({ ...row.left, column: 'left' });
+            allItems.push({ ...row.right, column: 'right' });
+        });
+        verbRows.forEach(v => {
+            allItems.push({ ...v, column: 'verbs' });
+        });
+
+        // ============================================================================
+        // CALM EDUCATIONAL VOICE ENGINE
+        // ============================================================================
+        let currentReadMode = 'both'; // 'both', 'meaning', 'word'
+        let showMeaningsInTable = true;
+        let speechRates = [0.76, 0.65, 0.88];
+        let speechRateLabels = [
+            'السرعة: هادئة (0.76x)',
+            'السرعة: متأنية جداً (0.65x)',
+            'السرعة: معتدلة (0.88x)'
+        ];
+        let currentRateIdx = 0;
+
+        const calmProfiles = {
+            calm_female: {
+                label: 'معلمة هادئة',
+                preferredGender: 'female',
+                pitch: 0.94,
+                rateMultiplier: 1.0,
+                pauseBetweenMs: 550
+            },
+            calm_male: {
+                label: 'معلم هادئ',
+                preferredGender: 'male',
+                pitch: 0.88,
+                rateMultiplier: 0.96,
+                pauseBetweenMs: 580
+            },
+            extra_calm: {
+                label: 'تأسيسي متأنٍ جداً',
+                preferredGender: 'female',
+                pitch: 0.92,
+                rateMultiplier: 0.86,
+                pauseBetweenMs: 720
+            }
+        };
+
+        let activeProfileKey = 'calm_female';
+        let manualSelectedVoiceURI = 'auto';
+        let rankedEnglishVoices = [];
+
+        let isAutoPlaying = false;
+        let autoPlayMode = 'both';
+        let autoPlayList = [];
+        let autoPlayIndex = 0;
+        let autoPlayTimer = null;
+        let activeItemId = null;
+        let wordSyncTimers = [];
+        let chromeKeepAliveInterval = null;
+        let currentSpeechSessionId = 0;
+
+        let currentSpotlightIdx = 0;
+        let currentQuizIdx = 0;
+        let quizScore = 0;
+        let quizAnswered = {};
+
+        function clearWordSyncTimers() {
+            wordSyncTimers.forEach(t => clearTimeout(t));
+            wordSyncTimers = [];
+            if (chromeKeepAliveInterval) {
+                clearInterval(chromeKeepAliveInterval);
+                chromeKeepAliveInterval = null;
+            }
+        }
+
+        function scoreVoiceForCalmEducation(v, preferredGender = 'female') {
+            if (!v || !v.lang) return -999;
+            const lang = v.lang.toLowerCase();
+            if (!lang.startsWith('en')) return -999;
+
+            const name = v.name.toLowerCase();
+            let score = 0;
+
+            if (lang === 'en-gb' || lang === 'en_gb') score += 34;
+            else if (lang === 'en-us' || lang === 'en_us') score += 30;
+            else score += 15;
+
+            if (name.includes('natural') || name.includes('online')) score += 110;
+            if (name.includes('neural') || name.includes('wavenet') || name.includes('studio')) score += 95;
+            if (name.includes('enhanced') || name.includes('premium') || name.includes('siri')) score += 80;
+            if (name.includes('google uk english') || name.includes('google us english')) score += 70;
+
+            const calmFemaleNames = ['sonia', 'libby', 'jenny', 'aria', 'emma', 'ava', 'michelle', 'clara', 'samantha', 'serena', 'karen', 'moira', 'google uk english female', 'zira'];
+            const calmMaleNames = ['ryan', 'andrew', 'brian', 'guy', 'christopher', 'thomas', 'daniel', 'oliver', 'arthur', 'google uk english male', 'alex', 'david'];
+
+            const isFemale = calmFemaleNames.some(fn => name.includes(fn)) || name.includes('female');
+            const isMale = calmMaleNames.some(mn => name.includes(mn)) || (name.includes('male') && !name.includes('female'));
+
+            if (preferredGender === 'female') {
+                if (isFemale) score += 45;
+                if (isMale) score -= 15;
+            } else {
+                if (isMale) score += 45;
+                if (isFemale) score -= 15;
+            }
+
+            return score;
+        }
+
+        function refreshVoiceList() {
+            if (!('speechSynthesis' in window)) return;
+            const allVoices = window.speechSynthesis.getVoices() || [];
+            const profile = calmProfiles[activeProfileKey] || calmProfiles.calm_female;
+
+            rankedEnglishVoices = allVoices
+                .filter(v => v.lang && v.lang.toLowerCase().startsWith('en'))
+                .map(v => ({ voice: v, score: scoreVoiceForCalmEducation(v, profile.preferredGender) }))
+                .sort((a, b) => b.score - a.score);
+
+            const dropdown = document.getElementById('voice-select-dropdown');
+            if (dropdown && rankedEnglishVoices.length > 0) {
+                const prevVal = manualSelectedVoiceURI;
+                let html = `<option value="auto">✨ اختيار تلقائي (أفضل صوت هادئ)</option>`;
+                rankedEnglishVoices.forEach(({ voice, score }) => {
+                    const tag = score >= 120 ? '⭐ HD ' : '';
+                    const cleanName = voice.name.replace(/Microsoft |Online \(Natural\) - /g, '');
+                    html += `<option value="${voice.voiceURI}">${tag}${cleanName} (${voice.lang})</option>`;
+                });
+                dropdown.innerHTML = html;
+                dropdown.value = rankedEnglishVoices.some(r => r.voice.voiceURI === prevVal) ? prevVal : 'auto';
+            }
+            updateActiveVoiceBadge();
+        }
+
+        function getEnglishVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            if (rankedEnglishVoices.length === 0) refreshVoiceList();
+            if (manualSelectedVoiceURI !== 'auto') {
+                const found = rankedEnglishVoices.find(r => r.voice.voiceURI === manualSelectedVoiceURI);
+                if (found) return found.voice;
+            }
+            return rankedEnglishVoices.length > 0 ? rankedEnglishVoices[0].voice : null;
+        }
+
+        function updateActiveVoiceBadge() {
+            const badge = document.getElementById('active-voice-badge');
+            if (!badge) return;
+            const voice = getEnglishVoice();
+            const profile = calmProfiles[activeProfileKey];
+            if (voice) {
+                const shortName = voice.name.replace(/Microsoft |Online \(Natural\) - /g, '');
+                badge.textContent = `🎙️ ${shortName} • (${profile.label})`;
+            } else {
+                badge.textContent = `🎙️ الصوت التعليمي الهادئ (${profile.label})`;
+            }
+        }
+
+        function setCalmVoiceProfile(profileKey) {
+            if (!calmProfiles[profileKey]) return;
+            activeProfileKey = profileKey;
+            manualSelectedVoiceURI = 'auto';
+
+            ['calm_female', 'calm_male', 'extra_calm'].forEach(k => {
+                const btn = document.getElementById('vp-' + k);
+                if (!btn) return;
+                btn.className = (k === profileKey)
+                    ? 'px-3 py-1.5 rounded-lg bg-purple-700 text-white shadow-sm transition flex items-center gap-1'
+                    : 'px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1';
+            });
+
+            refreshVoiceList();
+            stopAllSpeech();
+            speakUtterance('Reading Vocabulary. Let us listen calmly to each word and its meaning in English.', {
+                displayBannerEn: '🎙️ Calm Educational Voice Ready!',
+                displayBannerAr: 'تم تفعيل الصوت التعليمي الهادئ — اضغط على أي مفردة للاستماع'
+            });
+        }
+
+        function onManualVoiceSelect(uri) {
+            manualSelectedVoiceURI = uri;
+            updateActiveVoiceBadge();
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => refreshVoiceList();
+        }
+
+        function stopAllSpeech() {
+            currentSpeechSessionId++;
+            clearWordSyncTimers();
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            if (autoPlayTimer) {
+                clearTimeout(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+            if (isAutoPlaying) {
+                isAutoPlaying = false;
+                updateAutoPlayButton();
+            }
+            const progWrap = document.getElementById('autoplay-progress-bar-wrap');
+            if (progWrap) progWrap.classList.add('hidden');
+            clearAllHighlights();
+            const wave = document.getElementById('sound-wave-indicator');
+            if (wave) {
+                wave.classList.add('hidden');
+                wave.classList.remove('flex');
+            }
+        }
+
+        function clearAllHighlights() {
+            activeItemId = null;
+            document.querySelectorAll('.vocab-item-cell').forEach(el => el.classList.remove('cell-speaking'));
+            document.querySelectorAll('.word-title-hl').forEach(el => el.classList.remove('word-highlight-pill'));
+            document.querySelectorAll('.meaning-box-hl').forEach(el => el.classList.remove('word-highlight-pill'));
+            document.querySelectorAll('.word-token').forEach(el => el.classList.remove('word-token-active'));
+        }
+
+        // Renders live tokenized text inside the top teleprompter banner so every spoken word lights up in sync
+        function renderLiveBannerTokens(cleanText, prefixLabel = '🔊') {
+            const bannerEn = document.getElementById('live-speech-text');
+            if (!bannerEn) return;
+            const words = cleanText.trim().split(/\s+/).filter(Boolean);
+            const tokensHtml = words.map((w, idx) => `<span class="word-token banner-word-token px-1 rounded" data-widx="${idx}">${w}</span>`).join(' ');
+            bannerEn.innerHTML = `<span class="text-purple-300 text-xs font-black uppercase mr-1.5">${prefixLabel}</span>${tokensHtml}`;
+        }
+
+        function highlightTokenAtIndex(containers, activeIdx) {
+            containers.forEach(container => {
+                if (!container) return;
+                const tokens = container.querySelectorAll('.word-token');
+                tokens.forEach((t, idx) => {
+                    if (idx === activeIdx) t.classList.add('word-token-active');
+                    else t.classList.remove('word-token-active');
+                });
+            });
+        }
+
+        function speakUtterance(text, options = {}) {
+            return new Promise((resolve) => {
+                const sessionId = ++currentSpeechSessionId;
+                clearWordSyncTimers();
+                if (!('speechSynthesis' in window)) {
+                    resolve();
+                    return;
+                }
+                window.speechSynthesis.cancel();
+
+                const profile = calmProfiles[activeProfileKey] || calmProfiles.calm_female;
+                const cleanText = (text || '').trim();
+                if (!cleanText) {
+                    resolve();
+                    return;
+                }
+                const spokenText = /[.!?]$/.test(cleanText) ? cleanText : cleanText + '.';
+
+                const utter = new SpeechSynthesisUtterance(spokenText);
+                const voice = getEnglishVoice();
+                if (voice) {
+                    utter.voice = voice;
+                    utter.lang = voice.lang || 'en-GB';
+                } else {
+                    utter.lang = 'en-GB';
+                }
+
+                const baseRate = options.rate || speechRates[currentRateIdx];
+                const finalRate = Math.max(0.55, Math.min(1.05, +(baseRate * profile.rateMultiplier).toFixed(2)));
+                utter.rate = finalRate;
+                utter.pitch = options.pitch || profile.pitch;
+                utter.volume = 0.95;
+
+                const wave = document.getElementById('sound-wave-indicator');
+                if (wave) {
+                    wave.classList.remove('hidden');
+                    wave.classList.add('flex');
+                }
+
+                const bannerEn = document.getElementById('live-speech-text');
+                const bannerAr = document.getElementById('live-speech-ar');
+                if (bannerAr && options.displayBannerAr) bannerAr.textContent = options.displayBannerAr;
+
+                // Render synchronized word tokens in the live banner
+                renderLiveBannerTokens(cleanText, options.bannerPrefix || '🔊');
+
+                // Collect all DOM containers whose `.word-token` elements should highlight in sync
+                const syncContainers = [bannerEn];
+                if (options.tokenContainerId) {
+                    const targetEl = document.getElementById(options.tokenContainerId);
+                    if (targetEl) syncContainers.push(targetEl);
+                }
+
+                const wordsList = cleanText.split(/\s+/).filter(Boolean);
+                let syncStarted = false;
+                let nativeBoundaryActive = false;
+                let lastHighlightedWordIdx = -1;
+                let resolved = false;
+
+                // Monotonic single-pass highlighter: prevents any word from highlighting twice
+                const setWordHighlightOnce = (wordIdx) => {
+                    if (sessionId !== currentSpeechSessionId) return;
+                    if (wordIdx < 0 || wordIdx >= wordsList.length) return;
+                    if (wordIdx <= lastHighlightedWordIdx) return; // Never repeat or jump backward
+                    lastHighlightedWordIdx = wordIdx;
+                    highlightTokenAtIndex(syncContainers, wordIdx);
+                };
+
+                // Fallback cadence scheduler (runs ONLY once per utterance if native boundary is absent)
+                const startSingleStreamSync = () => {
+                    if (syncStarted || sessionId !== currentSpeechSessionId) return;
+                    syncStarted = true;
+                    setWordHighlightOnce(0);
+
+                    if (wordsList.length <= 1) return;
+
+                    const msPerChar = 64 / finalRate;
+                    const baseWordPause = 115 / finalRate;
+                    let cumulativeMs = 0;
+
+                    for (let idx = 0; idx < wordsList.length; idx++) {
+                        const w = wordsList[idx];
+                        const cleanW = w.replace(/[^a-zA-Z]/g, '');
+                        const commaPause = /[,;:]/.test(w) ? (170 / finalRate) : 0;
+                        const wordDuration = Math.max(215 / finalRate, (cleanW.length * msPerChar) + baseWordPause + commaPause);
+
+                        if (idx > 0) {
+                            const targetIdx = idx;
+                            const timerId = setTimeout(() => {
+                                // Only drive highlight if native boundary hasn't taken exclusive control
+                                if (!nativeBoundaryActive && sessionId === currentSpeechSessionId) {
+                                    setWordHighlightOnce(targetIdx);
+                                }
+                            }, cumulativeMs);
+                            wordSyncTimers.push(timerId);
+                        }
+                        cumulativeMs += wordDuration;
+                    }
+                };
+
+                // Native Web Speech API word boundary listener:
+                // When it fires, it immediately cancels fallback timers so there is ZERO duplication
+                utter.onboundary = (event) => {
+                    if (sessionId !== currentSpeechSessionId) return;
+                    if (event.name === 'word' && typeof event.charIndex === 'number') {
+                        if (!nativeBoundaryActive) {
+                            nativeBoundaryActive = true;
+                            // Cancel scheduled fallback timers immediately to prevent double sync
+                            wordSyncTimers.forEach(t => clearTimeout(t));
+                            wordSyncTimers = [];
+                        }
+                        const upto = cleanText.slice(0, event.charIndex);
+                        const wordIdx = upto.trim() === '' ? 0 : upto.trim().split(/\s+/).length;
+                        setWordHighlightOnce(wordIdx);
+                    }
+                };
+
+                utter.onstart = () => {
+                    if (sessionId !== currentSpeechSessionId) return;
+                    startSingleStreamSync();
+
+                    // Chrome GitHub Pages Keep-Alive without pause/resume glitching on short utterances
+                    chromeKeepAliveInterval = setInterval(() => {
+                        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                            window.speechSynthesis.resume();
+                        }
+                    }, 8000);
+                };
+
+                // Safety starter if `onstart` is delayed on mobile/cloud voices
+                const backupStartId = setTimeout(() => {
+                    if (!syncStarted && sessionId === currentSpeechSessionId) {
+                        startSingleStreamSync();
+                    }
+                }, 160);
+                wordSyncTimers.push(backupStartId);
+
+                const cleanupAndResolve = () => {
+                    if (resolved) return;
+                    resolved = true;
+                    clearWordSyncTimers();
+                    if (sessionId === currentSpeechSessionId) {
+                        highlightTokenAtIndex(syncContainers, -1);
+                        if (options.displayBannerEn && bannerEn) {
+                            bannerEn.textContent = options.displayBannerEn;
+                        }
+                        if (wave) {
+                            wave.classList.add('hidden');
+                            wave.classList.remove('flex');
+                        }
+                    }
+                    resolve();
+                };
+
+                utter.onend = cleanupAndResolve;
+                utter.onerror = cleanupAndResolve;
+
+                window.speechSynthesis.speak(utter);
+            });
+        }
+
+        async function playVocabItem(id, forcedMode = null, fromAutoPlay = false) {
+            if (!fromAutoPlay) stopAllSpeech();
+            const item = allItems.find(x => x.id === id);
+            if (!item) return;
+
+            const mode = forcedMode || currentReadMode;
+            const profile = calmProfiles[activeProfileKey] || calmProfiles.calm_female;
+
+            activeItemId = item.id;
+            const cellEl = document.getElementById(`vocab-cell-${item.id}`);
+            const wordEl = document.getElementById(`vocab-word-${item.id}`);
+            const meaningEl = document.getElementById(`vocab-meaning-box-${item.id}`);
+
+            document.querySelectorAll('.vocab-item-cell').forEach(el => el.classList.remove('cell-speaking'));
+            if (cellEl) cellEl.classList.add('cell-speaking');
+
+            // Spoken word text (for V1/V2 verbs, read V1 then V2 clearly)
+            const spokenWordText = item.v1 ? `${item.v1} ${item.v2}` : item.word;
+
+            if (mode === 'word') {
+                if (wordEl) wordEl.classList.add('word-highlight-pill');
+                await speakUtterance(spokenWordText, {
+                    tokenContainerId: `word-tokens-${item.id}`,
+                    bannerPrefix: `Word #${item.id}:`,
+                    displayBannerEn: `🔊 ${item.word} ${item.phonetic}`,
+                    displayBannerAr: `المفردة بالعربية: ${item.arWord} — (${item.arMeaning})`
+                });
+                if (wordEl) wordEl.classList.remove('word-highlight-pill');
+            } else if (mode === 'meaning') {
+                if (meaningEl) meaningEl.classList.add('word-highlight-pill');
+                await speakUtterance(item.enMeaning, {
+                    tokenContainerId: `meaning-tokens-${item.id}`,
+                    bannerPrefix: `Meaning of "${item.word}":`,
+                    displayBannerEn: `📖 Meaning of "${item.word}": ${item.enMeaning}`,
+                    displayBannerAr: `قراءة المعنى بالإنجليزية: ${item.enMeaning} (${item.arMeaning})`
+                });
+                if (meaningEl) meaningEl.classList.remove('word-highlight-pill');
+            } else if (mode === 'both') {
+                // Step 1: Speak the English Word/Phrase with synchronized word tokens
+                if (wordEl) wordEl.classList.add('word-highlight-pill');
+                await speakUtterance(spokenWordText, {
+                    tokenContainerId: `word-tokens-${item.id}`,
+                    bannerPrefix: `Word #${item.id}:`,
+                    displayBannerEn: `🔊 ${item.word} ➔ ${item.enMeaning}`,
+                    displayBannerAr: `${item.word} (${item.arWord}) — المعنى: ${item.arMeaning}`
+                });
+                if (wordEl) wordEl.classList.remove('word-highlight-pill');
+
+                if (activeItemId !== item.id) return;
+                await new Promise(r => setTimeout(r, profile.pauseBetweenMs));
+                if (activeItemId !== item.id) return;
+
+                // Step 2: Speak the English Meaning with word-by-word highlighting
+                if (meaningEl) meaningEl.classList.add('word-highlight-pill');
+                await speakUtterance(item.enMeaning, {
+                    tokenContainerId: `meaning-tokens-${item.id}`,
+                    bannerPrefix: `EN Meaning:`,
+                    displayBannerEn: `📖 "${item.word}" means: "${item.enMeaning}"`,
+                    displayBannerAr: `المعنى باللغة الإنجليزية: ${item.enMeaning} (${item.arMeaning})`
+                });
+                if (meaningEl) meaningEl.classList.remove('word-highlight-pill');
+            } else if (mode === 'example') {
+                await speakUtterance(item.exampleEn, {
+                    tokenContainerId: `spotlight-example-tokens`,
+                    bannerPrefix: `Example:`,
+                    displayBannerEn: `💬 Example: ${item.exampleEn}`,
+                    displayBannerAr: item.exampleAr
+                });
+            }
+
+            if (!isAutoPlaying && cellEl) {
+                cellEl.classList.remove('cell-speaking');
+            }
+        }
+
+        async function playSingleVerbForm(id, formType, event) {
+            if (event) event.stopPropagation();
+            stopAllSpeech();
+            const item = verbRows.find(v => v.id === id);
+            if (!item) return;
+
+            const cellEl = document.getElementById(`vocab-cell-${item.id}`);
+            if (cellEl) cellEl.classList.add('cell-speaking');
+
+            if (formType === 'v1') {
+                await speakUtterance(item.v1, {
+                    tokenContainerId: `v1-tokens-${item.id}`,
+                    bannerPrefix: 'V1 (Present):',
+                    displayBannerEn: `🔊 V1 (Present): "${item.v1}" — ${item.enMeaning}`,
+                    displayBannerAr: `الفعل المضارع (V1): ${item.v1} بمعنى (${item.arV1})`
+                });
+            } else {
+                await speakUtterance(item.v2, {
+                    tokenContainerId: `v2-tokens-${item.id}`,
+                    bannerPrefix: 'V2 (Past):',
+                    displayBannerEn: `🔊 V2 (Past): "${item.v2}" (Past of ${item.v1})`,
+                    displayBannerAr: `الفعل الماضي (V2): ${item.v2} بمعنى (${item.arV2})`
+                });
+            }
+
+            if (cellEl) cellEl.classList.remove('cell-speaking');
+        }
+
+        function buildTokenizedWords(textStr, arLabel = 'نطق كلمة مفردة') {
+            return (textStr || '').trim().split(/\s+/).map(w => {
+                const safeW = w.replace(/'/g, "\\'");
+                return `<span class="word-token" onclick="event.stopPropagation(); speakUtterance('${safeW}', { bannerPrefix: 'Word:', displayBannerEn: '🔊 Word: ${safeW}', displayBannerAr: '${arLabel}: ${safeW}' })" title="اضغط لنطق هذه الكلمة بمفردها">${w}</span>`;
+            }).join(' ');
+        }
+
+        function buildTokenizedMeaning(enMeaning) {
+            return buildTokenizedWords(enMeaning, 'نطق كلمة مفردة من المعنى الإنجليزي');
+        }
+
+        function renderSingleVocabCell(item, isLeftCol) {
+            const weightClass = item.isBold ? 'font-black' : 'font-semibold';
+            const borderRightClass = isLeftCol ? 'md:border-r-2 md:border-[#9b6b9e]' : '';
+
+            return `
+                <div id="vocab-cell-${item.id}"
+                     onclick="playVocabItem(${item.id})"
+                     class="vocab-item-cell border-b-[1.5px] border-[#9b6b9e] ${borderRightClass} p-3.5 sm:px-5 sm:py-3.5 hover:bg-purple-50/50 transition cursor-pointer flex flex-col justify-between gap-2">
+                    
+                    <!-- Top Row: Exact Worksheet English Word (Tokenized for Sync) + Arabic Translation -->
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <div class="flex items-baseline gap-2.5 flex-wrap">
+                            <span class="text-[11px] font-black text-purple-700 bg-purple-100/80 px-1.5 py-0.5 rounded-md en-font">#${item.id}</span>
+                            <span id="vocab-word-${item.id}"
+                                  onclick="event.stopPropagation(); playVocabItem(${item.id}, 'word')"
+                                  class="word-title-hl en-font text-lg sm:text-xl ${weightClass} text-slate-950 hover:text-purple-800 transition">
+                                <span id="word-tokens-${item.id}">${buildTokenizedWords(item.word, item.arWord)}</span>
+                            </span>
+                            <span class="text-base sm:text-lg ${weightClass} text-slate-900" dir="rtl">
+                                ${item.arWord}
+                            </span>
+                        </div>
+
+                        <!-- Quick Audio Action Buttons -->
+                        <div class="no-print flex items-center gap-1" dir="rtl">
+                            <button type="button" onclick="event.stopPropagation(); playVocabItem(${item.id}, 'word')"
+                                    class="px-2 py-1 rounded-lg bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 text-[11px] font-extrabold shadow-sm transition flex items-center gap-1"
+                                    title="نطق المفردة فقط">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>الكلمة</span>
+                            </button>
+                            <button type="button" onclick="event.stopPropagation(); playVocabItem(${item.id}, 'meaning')"
+                                    class="px-2 py-1 rounded-lg bg-purple-800 hover:bg-purple-900 text-amber-300 text-[11px] font-extrabold shadow-sm transition flex items-center gap-1"
+                                    title="قراءة المعنى باللغة الإنجليزية">
+                                <i class="fa-solid fa-book-open"></i>
+                                <span>المعنى EN</span>
+                            </button>
+                            <button type="button" onclick="event.stopPropagation(); openInSpotlight(${item.id})"
+                                    class="w-7 h-7 rounded-lg bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 text-xs flex items-center justify-center transition"
+                                    title="فتح في سبورة الشرح">
+                                <i class="fa-solid fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- English Meaning Row (Clickable for Audio & Word-by-Word Highlighting) -->
+                    <div id="vocab-meaning-box-${item.id}"
+                         onclick="event.stopPropagation(); playVocabItem(${item.id}, 'meaning')"
+                         class="${showMeaningsInTable ? 'block' : 'hidden'} meaning-box-hl rounded-xl bg-white/80 hover:bg-white px-3 py-1.5 border border-purple-200/80 shadow-sm transition">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="en-font text-xs sm:text-sm font-semibold text-purple-950 leading-snug">
+                                <span class="text-[10px] font-black uppercase tracking-wider text-purple-600 mr-1">EN Meaning:</span>
+                                <span id="meaning-tokens-${item.id}">${buildTokenizedMeaning(item.enMeaning)}</span>
+                            </div>
+                            <span class="text-sm shrink-0 select-none">${item.icon}</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-slate-500 mt-0.5" dir="rtl">
+                            ${item.arMeaning}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWorksheetTables() {
+            // 1. Render Main 13x2 Reading Vocabulary Table
+            const mainGrid = document.getElementById('vocab-main-table-grid');
+            let gridHtml = '';
+            readingVocabRows.forEach(row => {
+                gridHtml += renderSingleVocabCell(row.left, true);
+                gridHtml += renderSingleVocabCell(row.right, false);
+            });
+            mainGrid.innerHTML = gridHtml;
+
+            // 2. Render Bottom V1 / V2 Verbs Table with Synchronized Word Tokens
+            const verbsBody = document.getElementById('verbs-table-body');
+            verbsBody.innerHTML = verbRows.map(v => `
+                <div id="vocab-cell-${v.id}"
+                     onclick="playVocabItem(${v.id})"
+                     class="vocab-item-cell border-b border-[#9b6b9e] last:border-b-0 hover:bg-purple-50/50 transition cursor-pointer">
+                    
+                    <!-- Combined Word Token Container for Full V1/V2 Sync -->
+                    <div id="word-tokens-${v.id}" class="grid grid-cols-2">
+                        <!-- V1 Cell -->
+                        <div onclick="playSingleVerbForm(${v.id}, 'v1', event)"
+                             class="p-3 sm:px-5 border-r border-[#9b6b9e] flex items-center justify-between gap-2 hover:bg-purple-100/40 transition">
+                            <div class="flex items-baseline gap-2 flex-wrap">
+                                <span id="vocab-word-${v.id}" class="word-title-hl en-font text-base sm:text-lg font-bold text-slate-950">
+                                    <span id="v1-tokens-${v.id}">${buildTokenizedWords(v.v1, v.arV1)}</span>
+                                </span>
+                                <span class="text-base sm:text-lg font-black text-slate-900" dir="rtl">${v.arV1}</span>
+                            </div>
+                            <span class="no-print text-xs text-purple-700 bg-purple-100 px-2 py-0.5 rounded-lg font-bold">V1 🔊</span>
+                        </div>
+
+                        <!-- V2 Cell -->
+                        <div onclick="playSingleVerbForm(${v.id}, 'v2', event)"
+                             class="p-3 sm:px-5 flex items-center justify-between gap-2 hover:bg-amber-100/40 transition">
+                            <div class="flex items-baseline gap-2 flex-wrap">
+                                <span class="en-font text-base sm:text-lg font-bold text-slate-950">
+                                    <span id="v2-tokens-${v.id}">${buildTokenizedWords(v.v2, v.arV2)}</span>
+                                </span>
+                                <span class="text-base sm:text-lg font-black text-slate-900" dir="rtl">${v.arV2}</span>
+                            </div>
+                            <span class="no-print text-xs text-amber-800 bg-amber-100 px-2 py-0.5 rounded-lg font-bold">V2 🔊</span>
+                        </div>
+                    </div>
+
+                    <!-- English Meaning Sub-bar for the Verb Pair -->
+                    <div id="vocab-meaning-box-${v.id}"
+                         onclick="event.stopPropagation(); playVocabItem(${v.id}, 'meaning')"
+                         class="${showMeaningsInTable ? 'block' : 'hidden'} meaning-box-hl mx-3 mb-2.5 px-3 py-1.5 rounded-xl bg-white/85 border border-purple-200/80 flex flex-wrap items-center justify-between gap-2">
+                        <div class="en-font text-xs sm:text-sm font-semibold text-purple-950">
+                            <span class="text-[10px] font-black uppercase text-purple-700 mr-1">EN Meaning:</span>
+                            <span id="meaning-tokens-${v.id}">${buildTokenizedMeaning(v.enMeaning)}</span>
+                        </div>
+                        <div class="no-print flex items-center gap-1.5" dir="rtl">
+                            <button type="button" onclick="event.stopPropagation(); playVocabItem(${v.id}, 'both')"
+                                    class="px-2.5 py-0.5 rounded-lg bg-purple-800 text-amber-300 text-[11px] font-extrabold">
+                                <span>نطق V1/V2 + المعنى EN</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMeaningsDisplay() {
+            showMeaningsInTable = !showMeaningsInTable;
+            const btn = document.getElementById('btn-toggle-meanings');
+            if (showMeaningsInTable) {
+                btn.innerHTML = `<i class="fa-solid fa-eye text-amber-600"></i><span>المعنى EN: ظاهر</span>`;
+            } else {
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash text-slate-500"></i><span>المعنى EN: مخفي</span>`;
+            }
+            renderWorksheetTables();
+        }
+
+        function updateAutoPlayButton() {
+            const btnBoth = document.getElementById('btn-autoplay');
+            const btnWords = document.getElementById('btn-autoplay-words');
+            const progWrap = document.getElementById('autoplay-progress-bar-wrap');
+            const progFill = document.getElementById('autoplay-progress-fill');
+            const progCounter = document.getElementById('autoplay-step-counter');
+
+            if (isAutoPlaying) {
+                const currentNum = Math.min(autoPlayIndex + 1, autoPlayList.length);
+                const pct = Math.round((currentNum / Math.max(1, autoPlayList.length)) * 100);
+                if (progWrap) progWrap.classList.remove('hidden');
+                if (progFill) progFill.style.width = `${pct}%`;
+                if (progCounter) progCounter.textContent = `${currentNum} / ${autoPlayList.length}`;
+
+                if (btnBoth) {
+                    btnBoth.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-rose-600 hover:bg-rose-700 text-white shadow-md transition flex items-center gap-2 animate-pulse';
+                    btnBoth.innerHTML = `<i class="fa-solid fa-circle-stop text-base"></i><span>إيقاف القراءة (${currentNum}/${autoPlayList.length})</span>`;
+                }
+                if (btnWords) {
+                    btnWords.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-slate-700 text-white shadow-md transition flex items-center gap-2';
+                    btnWords.innerHTML = `<i class="fa-solid fa-volume-high"></i><span>جاري القراءة (${currentNum}/${autoPlayList.length})</span>`;
+                }
+            } else {
+                if (progWrap) progWrap.classList.add('hidden');
+                if (btnBoth) {
+                    btnBoth.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-md transition flex items-center gap-2';
+                    btnBoth.innerHTML = `<i class="fa-solid fa-circle-play text-base"></i><span>قراءة جميع المفردات + المعنى (29)</span>`;
+                }
+                if (btnWords) {
+                    btnWords.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-purple-700 hover:bg-purple-800 text-white shadow-md transition flex items-center gap-2';
+                    btnWords.innerHTML = `<i class="fa-solid fa-list-ol"></i><span>قراءة جميع المفردات فقط</span>`;
+                }
+            }
+        }
+
+        function toggleAutoPlayLesson(mode = 'both') {
+            if (isAutoPlaying) {
+                stopAllSpeech();
+                return;
+            }
+            playAllVocabularySequential(mode);
+        }
+
+        function playAllVocabularySequential(mode = 'both') {
+            playSequenceList(allItems, mode);
+        }
+
+        function playColumnSequence(colType) {
+            if (colType === 'left') {
+                playSequenceList(readingVocabRows.map(r => r.left), currentReadMode);
+            } else if (colType === 'right') {
+                playSequenceList(readingVocabRows.map(r => r.right), currentReadMode);
+            } else if (colType === 'verbs') {
+                playSequenceList(verbRows, currentReadMode);
+            }
+        }
+
+        async function playSequenceList(list, mode = 'both') {
+            stopAllSpeech();
+            switchView('sheet');
+            autoPlayList = list;
+            autoPlayMode = mode;
+            autoPlayIndex = 0;
+            isAutoPlaying = true;
+            updateAutoPlayButton();
+            runNextAutoPlayItem();
+        }
+
+        function stepAutoPlay(delta) {
+            if (!isAutoPlaying || autoPlayList.length === 0) return;
+            if (autoPlayTimer) {
+                clearTimeout(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+            clearWordSyncTimers();
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            autoPlayIndex = Math.max(0, Math.min(autoPlayList.length - 1, autoPlayIndex + delta));
+            runNextAutoPlayItem();
+        }
+
+        async function runNextAutoPlayItem() {
+            if (!isAutoPlaying || autoPlayIndex >= autoPlayList.length) {
+                isAutoPlaying = false;
+                updateAutoPlayButton();
+                clearAllHighlights();
+                return;
+            }
+
+            updateAutoPlayButton();
+            const item = autoPlayList[autoPlayIndex];
+            const currentIdxSnapshot = autoPlayIndex;
+            const cellEl = document.getElementById(`vocab-cell-${item.id}`);
+            if (cellEl) cellEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            await playVocabItem(item.id, autoPlayMode, true);
+            if (!isAutoPlaying || autoPlayIndex !== currentIdxSnapshot) return;
+
+            autoPlayTimer = setTimeout(() => {
+                if (!isAutoPlaying) return;
+                autoPlayIndex++;
+                runNextAutoPlayItem();
+            }, 650);
+        }
+
+        async function playAllMeaningsOnly() {
+            playSequenceList(allItems, 'meaning');
+        }
+
+        function openInSpotlight(id) {
+            const idx = allItems.findIndex(x => x.id === id);
+            if (idx !== -1) currentSpotlightIdx = idx;
+            switchView('spotlight');
+            renderSpotlight();
+            playVocabItem(allItems[currentSpotlightIdx].id, 'both');
+        }
+
+        function renderSpotlight() {
+            const item = allItems[currentSpotlightIdx];
+            document.getElementById('spotlight-counter').textContent = `${currentSpotlightIdx + 1} / ${allItems.length}`;
+            document.getElementById('mic-feedback-box').classList.add('hidden');
+
+            const box = document.getElementById('spotlight-card-box');
+            box.innerHTML = `
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex-1 space-y-4 w-full">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <span class="bg-white/15 text-purple-200 px-3.5 py-1 rounded-full text-xs font-extrabold">
+                                مفردة رقم #${currentSpotlightIdx + 1} من ${allItems.length}
+                            </span>
+                            <span class="en-font bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3.5 py-1 rounded-full text-sm font-bold">
+                                ${item.phonetic}
+                            </span>
+                        </div>
+
+                        <!-- Main Word & Arabic Translation -->
+                        <div class="bg-white rounded-3xl p-5 text-slate-900 shadow-lg flex flex-wrap items-center justify-between gap-4">
+                            <div dir="ltr" class="text-left">
+                                <div class="text-xs font-extrabold text-slate-400 uppercase">Reading Vocabulary</div>
+                                <div class="en-font text-2xl sm:text-4xl font-black text-purple-950">${item.word}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs font-extrabold text-slate-400">المعنى بالعربية</div>
+                                <div class="text-2xl sm:text-3xl font-black text-rose-600">${item.arWord}</div>
+                            </div>
+                            <button onclick="playVocabItem(${item.id}, 'word')" class="px-4 py-3 rounded-2xl bg-purple-700 hover:bg-purple-800 text-white font-extrabold text-sm shadow flex items-center gap-2">
+                                <i class="fa-solid fa-volume-high text-lg"></i>
+                                <span>انطق المفردة</span>
+                            </button>
+                        </div>
+
+                        <!-- English Meaning Box -->
+                        <div class="bg-slate-950/75 rounded-3xl p-5 text-white border border-purple-400/30 shadow-lg">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="text-xs font-extrabold text-amber-300">
+                                    <i class="fa-solid fa-book-open ml-1"></i>المعنى باللغة الإنجليزية (English Meaning):
+                                </span>
+                                <button onclick="playVocabItem(${item.id}, 'meaning')" class="px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                    <span>استمع للمعنى بالإنجليزية</span>
+                                </button>
+                            </div>
+                            <p class="en-font text-xl sm:text-2xl font-bold text-amber-300 tracking-wide" dir="ltr">
+                                "${item.enMeaning}"
+                            </p>
+                            <p class="text-xs sm:text-sm font-bold text-slate-300 mt-2">
+                                🇸🇦 توضيح المعنى: ${item.arMeaning}
+                            </p>
+                        </div>
+
+                        <!-- Contextual Example -->
+                        <div class="bg-white/10 rounded-2xl p-4 text-white border border-white/15 flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                                <div class="text-xs font-extrabold text-purple-200">مثال في جملة (Example Sentence):</div>
+                                <div id="spotlight-example-tokens" class="en-font text-sm sm:text-base font-bold mt-0.5 text-white" dir="ltr">${buildTokenizedWords(item.exampleEn, 'نطق كلمة من الجملة')}</div>
+                                <div class="text-xs font-bold text-slate-300 mt-0.5">${item.exampleAr}</div>
+                            </div>
+                            <button onclick="playVocabItem(${item.id}, 'example')" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs shadow-sm shrink-0">
+                                <i class="fa-solid fa-play ml-1 text-emerald-600"></i>استمع للمثال
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Icon Badge -->
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-white/15 border-2 border-white/30 flex items-center justify-center text-6xl sm:text-7xl shrink-0 shadow-inner select-none">
+                        ${item.icon}
+                    </div>
+                </div>
+            `;
+
+            // Render Sidebar List
+            const sidebar = document.getElementById('spotlight-sidebar-list');
+            sidebar.innerHTML = allItems.map((it, idx) => {
+                const isCurr = idx === currentSpotlightIdx;
+                return `
+                    <button onclick="currentSpotlightIdx = ${idx}; renderSpotlight(); playVocabItem(${it.id}, 'both');"
+                            class="w-full p-2.5 rounded-2xl border-2 text-right transition flex items-center justify-between gap-2 ${isCurr ? 'bg-purple-700 border-purple-700 text-white shadow-md' : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-purple-50'}">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="w-6 h-6 rounded-lg ${isCurr ? 'bg-white text-purple-800' : 'bg-slate-200 text-slate-700'} text-xs font-black flex items-center justify-center shrink-0">${idx + 1}</span>
+                            <div class="truncate">
+                                <div class="font-black text-xs sm:text-sm truncate">${it.arWord}</div>
+                                <div class="text-[10px] ${isCurr ? 'text-purple-200' : 'text-slate-500'} en-font truncate">${it.enMeaning}</div>
+                            </div>
+                        </div>
+                        <span class="en-font font-bold text-xs sm:text-sm shrink-0 ${isCurr ? 'text-amber-300' : 'text-purple-800'}">${it.word}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function nextSpotlight() {
+            currentSpotlightIdx = (currentSpotlightIdx + 1) % allItems.length;
+            renderSpotlight();
+            playVocabItem(allItems[currentSpotlightIdx].id, 'both');
+        }
+
+        function prevSpotlight() {
+            currentSpotlightIdx = (currentSpotlightIdx - 1 + allItems.length) % allItems.length;
+            renderSpotlight();
+            playVocabItem(allItems[currentSpotlightIdx].id, 'both');
+        }
+
+        function startPronunciationCheck(targetType) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const fbBox = document.getElementById('mic-feedback-box');
+            const item = allItems[currentSpotlightIdx];
+
+            if (!SpeechRecognition) {
+                fbBox.classList.remove('hidden');
+                fbBox.className = 'mt-4 p-4 rounded-2xl border-2 border-amber-300 bg-amber-50 text-amber-900 font-bold text-sm';
+                fbBox.innerHTML = `<i class="fa-solid fa-circle-info ml-1"></i>المتصفح الحالي لا يدعم التعرف الصوتي المباشر؛ استمع للنطق الهادئ وردد الكلمة!`;
+                return;
+            }
+
+            const rec = new SpeechRecognition();
+            rec.lang = 'en-US';
+            rec.interimResults = false;
+
+            const targetText = targetType === 'word' ? (item.v1 || item.word) : item.enMeaning;
+            fbBox.classList.remove('hidden');
+            fbBox.className = 'mt-4 p-4 rounded-2xl border-2 border-purple-300 bg-purple-50 text-purple-900 font-bold text-sm animate-pulse';
+            fbBox.innerHTML = `<i class="fa-solid fa-microphone-lines ml-2 text-rose-600"></i>انطق الآن باللغة الإنجليزية: <span class="en-font font-black text-purple-800">"${targetText}"</span>...`;
+
+            rec.onresult = (e) => {
+                const spoken = e.results[0][0].transcript.toLowerCase().trim();
+                const expected = targetText.toLowerCase().trim();
+                const isMatch = spoken.includes(expected) || expected.includes(spoken);
+
+                fbBox.classList.remove('animate-pulse');
+                if (isMatch) {
+                    fbBox.className = 'mt-4 p-4 rounded-2xl border-2 border-emerald-400 bg-emerald-50 text-emerald-900 font-bold text-sm';
+                    fbBox.innerHTML = `🌟 نطق رائع وصحيح! سمعتك تقول: <span class="en-font font-black">"${spoken}"</span> ★★★★★`;
+                } else {
+                    fbBox.className = 'mt-4 p-4 rounded-2xl border-2 border-amber-300 bg-amber-50 text-amber-900 font-bold text-sm';
+                    fbBox.innerHTML = `👍 محاولة طيبة! سمعتك تقول: <span class="en-font font-black">"${spoken}"</span> — حاول مرة أخرى لنطق: <span class="en-font font-black">"${targetText}"</span>`;
+                }
+            };
+
+            rec.onerror = () => {
+                fbBox.classList.remove('animate-pulse');
+                fbBox.className = 'mt-4 p-4 rounded-2xl border-2 border-rose-200 bg-rose-50 text-rose-800 font-bold text-sm';
+                fbBox.innerHTML = `تعذر التقاط الصوت، تأكد من تفعيل الميكروفون وحاول مجدداً.`;
+            };
+
+            rec.start();
+        }
+
+        function renderQuiz() {
+            const item = allItems[currentQuizIdx];
+            const box = document.getElementById('quiz-question-box');
+            document.getElementById('quiz-score-badge').textContent = `${quizScore} / ${allItems.length}`;
+
+            const options = [item];
+            for (let i = 1; options.length < 4; i++) {
+                const cand = allItems[(currentQuizIdx + i * 5) % allItems.length];
+                if (!options.some(o => o.id === cand.id)) options.push(cand);
+            }
+            options.sort((a, b) => ((a.id * 9 + currentQuizIdx) % 13) - ((b.id * 9 + currentQuizIdx) % 13));
+
+            const answeredChoice = quizAnswered[item.id];
+
+            box.innerHTML = `
+                <div class="bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-lg mb-6">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+                        <span class="text-xs font-extrabold bg-white/15 px-3 py-1 rounded-full">السؤال ${currentQuizIdx + 1} من ${allItems.length}</span>
+                        <button onclick="speakUtterance('${item.enMeaning.replace(/'/g, "\\'")}')"
+                                class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow flex items-center gap-2">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>استمع للمعنى بالإنجليزية</span>
+                        </button>
+                    </div>
+
+                    <div class="text-center py-3">
+                        <div class="text-xs font-bold text-purple-200 mb-1">أي مفردة من مفردات القراءة تطابق هذا المعنى الإنجليزي؟</div>
+                        <div class="en-font text-xl sm:text-3xl font-black text-amber-300 tracking-wide" dir="ltr">
+                            "${item.enMeaning}"
+                        </div>
+                        <div class="text-sm font-bold text-purple-100 mt-2">(${item.arMeaning})</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" dir="ltr">
+                    ${options.map(opt => {
+                        let btnStyle = 'bg-slate-50 border-slate-200 hover:border-purple-400 text-slate-800';
+                        if (answeredChoice) {
+                            if (opt.id === item.id) {
+                                btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-400';
+                            } else if (opt.id === answeredChoice) {
+                                btnStyle = 'bg-rose-50 border-rose-500 text-rose-950';
+                            }
+                        }
+                        return `
+                            <button onclick="submitQuizChoice(${opt.id})" ${answeredChoice ? 'disabled' : ''}
+                                    class="p-4 sm:p-5 rounded-2xl border-2 ${btnStyle} transition flex items-center justify-between gap-3 shadow-sm">
+                                <div class="text-left">
+                                    <div class="en-font text-lg sm:text-xl font-black">${opt.word}</div>
+                                    <div class="text-xs font-bold opacity-75 mt-0.5" dir="rtl">${opt.arWord}</div>
+                                </div>
+                                <span class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-purple-700"
+                                      onclick="event.stopPropagation(); speakUtterance('${(opt.v1 || opt.word).replace(/'/g, "\\'")}')">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </span>
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <button onclick="if(currentQuizIdx > 0){ currentQuizIdx--; renderQuiz(); }" ${currentQuizIdx === 0 ? 'disabled' : ''}
+                            class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 disabled:opacity-40 font-bold text-xs sm:text-sm">
+                        السؤال السابق
+                    </button>
+                    <button onclick="if(currentQuizIdx < allItems.length - 1){ currentQuizIdx++; renderQuiz(); speakUtterance(allItems[currentQuizIdx].enMeaning); }"
+                            class="px-5 py-2 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-extrabold text-xs sm:text-sm">
+                        السؤال التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        function submitQuizChoice(chosenId) {
+            const item = allItems[currentQuizIdx];
+            if (quizAnswered[item.id]) return;
+            quizAnswered[item.id] = chosenId;
+            if (chosenId === item.id) {
+                quizScore++;
+                speakUtterance(`Correct! ${item.v1 || item.word} means ${item.enMeaning}`);
+            } else {
+                speakUtterance(`${item.v1 || item.word} means ${item.enMeaning}`);
+            }
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            currentQuizIdx = 0;
+            quizScore = 0;
+            quizAnswered = {};
+            renderQuiz();
+        }
+
+        function setReadMode(mode) {
+            currentReadMode = mode;
+            ['both', 'meaning', 'word'].forEach(m => {
+                const btn = document.getElementById('rm-' + m);
+                if (!btn) return;
+                btn.className = (m === mode)
+                    ? 'px-2.5 py-1.5 rounded-lg bg-purple-700 text-white transition'
+                    : 'px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+            });
+        }
+
+        function cycleSpeechRate() {
+            currentRateIdx = (currentRateIdx + 1) % speechRates.length;
+            document.getElementById('speed-label').textContent = speechRateLabels[currentRateIdx];
+        }
+
+        function switchView(viewName) {
+            stopAllSpeech();
+            ['sheet', 'spotlight', 'quiz'].forEach(v => {
+                const sec = document.getElementById('view-' + v);
+                const tab = document.getElementById('tab-' + v);
+                if (v === viewName) {
+                    sec.classList.remove('hidden');
+                    sec.classList.add('block');
+                    tab.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-400 text-slate-950 shadow transition flex items-center gap-1.5';
+                } else {
+                    sec.classList.add('hidden');
+                    sec.classList.remove('block');
+                    tab.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5';
+                }
+            });
+
+            if (viewName === 'spotlight') renderSpotlight();
+            if (viewName === 'quiz') {
+                renderQuiz();
+                speakUtterance(allItems[currentQuizIdx].enMeaning);
+            }
+        }
+
+        function toggleGithubModal() {
+            const modal = document.getElementById('github-modal');
+            if (!modal) return;
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function copySourceForGithub() {
+            const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const tempArea = document.createElement('textarea');
+            tempArea.value = fullHtml;
+            document.body.appendChild(tempArea);
+            tempArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempArea);
+
+            const btn = document.getElementById('btn-copy-gh');
+            if (btn) {
+                const oldHtml = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check text-emerald-600"></i><span>تم نسخ الكود بنجاح!</span>`;
+                setTimeout(() => { btn.innerHTML = oldHtml; }, 2200);
+            }
+        }
+
+        function downloadAsIndexHtml() {
+            const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        window.onload = function () {
+            refreshVoiceList();
+            renderWorksheetTables();
+            renderSpotlight();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
